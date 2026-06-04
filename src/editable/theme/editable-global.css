@@ -15,6 +15,21 @@ body {
   background-color: var(--slot4-page-bg) !important;
   color: var(--slot4-page-text) !important;
   background-image: var(--slot4-body-gradient) !important;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button,
+textarea,
+select {
+  font-feature-settings: 'ss01' 1, 'ss02' 1, 'cv10' 1;
 }
 
 ::selection {
@@ -41,4 +56,25 @@ body {
 
 .article-content a {
   color: var(--slot4-accent-fill);
+}
+
+.article-content p + p {
+  margin-top: 1rem;
+}
+
+.article-content ul,
+.article-content ol {
+  margin-top: 1rem;
+  padding-left: 1.25rem;
+}
+
+.article-content img {
+  border-radius: 1.25rem;
+}
+
+.article-content blockquote {
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--slot4-accent-fill);
+  padding-left: 1rem;
+  color: color-mix(in oklab, var(--slot4-page-text) 82%, white);
 }
