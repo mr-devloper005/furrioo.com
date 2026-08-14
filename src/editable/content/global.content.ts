@@ -3,54 +3,53 @@ import { slot4BrandConfig } from '@/editable/theme/brand.config'
 export const globalContent = {
   site: {
     name: slot4BrandConfig.siteName,
-    tagline: slot4BrandConfig.tagline || 'A visual discovery home',
+    tagline: slot4BrandConfig.tagline || 'A visual directory',
     domain: slot4BrandConfig.domain,
     baseUrl: slot4BrandConfig.baseUrl,
   },
   nav: {
-    tagline: 'Visual discovery home',
+    tagline: 'A visual directory',
     primaryLinks: [
-      { label: 'Explore', href: '/article' },
-      { label: 'Images', href: '/image' },
-      { label: 'Profiles', href: '/profile' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'Home', href: '/' },
+      { label: 'Gallery', href: '/image' },
+      { label: 'Search', href: '/search' },
+      { label: 'About', href: '/about' },
     ],
     actions: {
-      primary: { label: 'Start exploring', href: '/' },
-      secondary: { label: 'Join now', href: '/signup' },
+      primary: { label: 'Sign up', href: '/signup' },
+      secondary: { label: 'Login', href: '/login' },
     },
   },
   footer: {
-    tagline: 'Discover posts, people, and visual work',
-    description: 'A clean browsing surface for image-led posts, creative profiles, articles, listings, bookmarks, and documents.',
+    tagline: 'Galleries, profiles and updates in one place',
+    description:
+      'An image-led directory for businesses and independent operators. Browse visual sets, open the detail you need, and move on quickly.',
     columns: [
       {
         title: 'Browse',
         links: [
-          { label: 'Articles', href: '/article' },
-          { label: 'Images', href: '/image' },
-          { label: 'Profiles', href: '/profile' },
-          { label: 'Listings', href: '/listing' },
+          { label: 'Gallery', href: '/image' },
+          { label: 'Search', href: '/search' },
         ],
       },
       {
-        title: 'Support',
+        title: 'Site',
         links: [
           { label: 'About', href: '/about' },
           { label: 'Contact', href: '/contact' },
           { label: 'Login', href: '/login' },
-          { label: 'Create account', href: '/signup' },
+          { label: 'Sign up', href: '/signup' },
         ],
       },
     ],
-    bottomNote: 'Built for clean browsing and focused discovery.',
+    bottomNote: 'Curated for clean browsing',
   },
   commonLabels: {
-    readMore: 'Open',
+    readMore: 'Read more',
     viewAll: 'View all',
     explore: 'Explore',
     latest: 'Latest',
-    related: 'Related',
+    related: 'More like this',
     published: 'Published',
   },
 } as const

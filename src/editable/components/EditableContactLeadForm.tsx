@@ -34,7 +34,10 @@ export function EditableContactLeadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-[2rem] border border-white/10 bg-white/96 p-6 text-[#161514] shadow-[0_24px_70px_rgba(0,0,0,0.18)] backdrop-blur md:p-8">
+    <form
+      onSubmit={handleSubmit}
+      className="rounded-[var(--fu-radius-lg)] border border-[var(--fu-line)] bg-white p-6 text-[var(--fu-text)] shadow-[var(--fu-shadow)] md:p-8"
+    >
       <div className="grid gap-4 md:grid-cols-2">
         <Field name="name" label="Full name" placeholder="Your name" required />
         <Field name="email" type="email" label="Email address" placeholder="you@example.com" required />
@@ -43,18 +46,28 @@ export function EditableContactLeadForm() {
         <Field name="phone" label="Phone number" placeholder="Optional" />
         <Field name="subject" label="Subject" placeholder="How can we help?" />
       </div>
-      <label className="mt-4 grid gap-2 text-sm font-black text-black">
+      <label className="mt-4 grid gap-2 text-[13px] font-semibold text-[var(--fu-text)]">
         Message
-        <textarea name="message" required rows={6} placeholder="Tell us what you need help with..." className="rounded-2xl border border-white/10 bg-white px-4 py-3 text-base font-medium text-[#161514] outline-none transition placeholder:text-black/35 focus:border-black" />
+        <textarea
+          name="message"
+          required
+          rows={6}
+          placeholder="Tell us what you need help with..."
+          className="rounded-[var(--fu-radius-sm)] border border-[var(--fu-line)] bg-[var(--fu-soft)] px-4 py-3 text-sm font-medium text-[var(--fu-text)] outline-none transition placeholder:text-black/35 focus:border-[var(--fu-accent-ring)] focus:bg-white"
+        />
       </label>
       <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       {message ? (
-        <div className={`mt-5 flex items-start gap-3 rounded-2xl px-4 py-3 text-sm font-bold ${status === 'success' ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-700'}`}>
+        <div className={`mt-5 flex items-start gap-3 rounded-[var(--fu-radius-sm)] px-4 py-3 text-sm font-medium ${status === 'success' ? 'bg-emerald-50 text-emerald-800' : 'bg-red-50 text-red-700'}`}>
           {status === 'success' ? <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" /> : null}
           <span>{message}</span>
         </div>
       ) : null}
-      <button type="submit" disabled={status === 'submitting'} className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-black px-6 text-sm font-black uppercase tracking-[0.24em] text-white shadow-lg transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70">
+      <button
+        type="submit"
+        disabled={status === 'submitting'}
+        className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[var(--fu-accent)] px-6 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-[var(--fu-accent-strong)] disabled:cursor-not-allowed disabled:opacity-70"
+      >
         {status === 'submitting' ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
         Send message
       </button>
@@ -64,9 +77,15 @@ export function EditableContactLeadForm() {
 
 function Field({ name, label, type = 'text', placeholder, required = false }: { name: string; label: string; type?: string; placeholder?: string; required?: boolean }) {
   return (
-    <label className="grid gap-2 text-sm font-black text-black">
+    <label className="grid gap-2 text-[13px] font-semibold text-[var(--fu-text)]">
       {label}
-      <input name={name} type={type} required={required} placeholder={placeholder} className="h-12 rounded-2xl border border-white/10 bg-white px-4 text-base font-medium text-[#161514] outline-none transition placeholder:text-black/35 focus:border-black" />
+      <input
+        name={name}
+        type={type}
+        required={required}
+        placeholder={placeholder}
+        className="h-12 rounded-full border border-[var(--fu-line)] bg-[var(--fu-soft)] px-5 text-sm font-medium text-[var(--fu-text)] outline-none transition placeholder:text-black/35 focus:border-[var(--fu-accent-ring)] focus:bg-white"
+      />
     </label>
   )
 }

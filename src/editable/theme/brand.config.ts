@@ -12,12 +12,18 @@ export const slot4BrandConfig = {
   baseUrl: siteIdentity.url,
   productKind,
   ogImage: siteIdentity.ogImage,
-  accents:
-    productKind === 'visual'
-      ? { primary: '#8df0c8', surface: '#07101f' }
-      : productKind === 'editorial'
-        ? { primary: '#241711', surface: '#fbf6ee' }
-        : productKind === 'directory'
-          ? { primary: '#0f172a', surface: '#f8fbff' }
-          : { primary: '#5b2b3b', surface: '#f7f1ea' },
+  // One house palette for every product kind: charcoal chrome + amber accent.
+  accents: { primary: '#f59331', surface: '#1e242c' },
+} as const
+
+export const furriooBrand = {
+  ink: '#1e242c',
+  inkDeep: '#161b21',
+  page: '#eeeeec',
+  card: '#ffffff',
+  accent: '#f59331',
+  accentStrong: '#e8811c',
+  text: '#181c22',
+  muted: '#666e79',
+  navTagline: 'A visual directory for business owners',
 } as const
