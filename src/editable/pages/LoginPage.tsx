@@ -1,63 +1,80 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight, Lock, Sparkles } from 'lucide-react'
+import { ArrowRight, BadgeCheck, Compass, ShieldCheck } from 'lucide-react'
 import { buildPageMetadata } from '@/lib/seo'
 import { EditableSiteShell } from '@/editable/shell/EditableSiteShell'
 import { EditableLocalLoginForm } from '@/editable/components/EditableLocalAuthForms'
 import { pagesContent } from '@/editable/content/pages.content'
+import { editableDesignContract as dc } from '@/editable/layouts/design-contract'
 
 export async function generateMetadata(): Promise<Metadata> {
   return buildPageMetadata({ path: '/login', title: 'Login', description: pagesContent.auth.login.metadataDescription })
 }
 
+const perks = [
+  { icon: Compass, label: 'Keep browsing', note: 'Pick up where you left off.' },
+  { icon: BadgeCheck, label: 'Manage entries', note: 'Edit and track what you publish.' },
+  { icon: ShieldCheck, label: 'Stays local', note: 'Your session lives in this browser.' },
+]
+
 export default function LoginPage() {
+  const copy = pagesContent.auth.login
+
   return (
     <EditableSiteShell>
-      <main className="bg-[linear-gradient(180deg,#fffaf3_0%,#f4efe6_100%)] text-black">
-        <section className="mx-auto max-w-[var(--editable-container)] px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
-          <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-            <article className="rounded-[2.4rem] border border-black/[0.08] bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.08)] sm:p-8 lg:p-10">
-              <p className="text-[11px] font-black uppercase tracking-[0.32em] text-[var(--slot4-accent)]">{pagesContent.auth.login.badge}</p>
-              <h1 className="mt-4 max-w-2xl text-5xl font-black leading-[0.94] tracking-[-0.08em] sm:text-6xl">
-                {pagesContent.auth.login.title}
-              </h1>
-              <p className="mt-5 max-w-xl text-base leading-8 text-black/64">{pagesContent.auth.login.description}</p>
+      <main className="bg-[var(--fu-page)] text-[var(--fu-text)]">
+        <section className="mx-auto w-full max-w-[var(--editable-container)] px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+          <div className="grid overflow-hidden rounded-[var(--fu-radius-lg)] shadow-[var(--fu-shadow-lg)] lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)]">
+            {/* dark panel */}
+            <div className="relative overflow-hidden bg-[var(--fu-ink)] p-8 text-white sm:p-10 lg:p-12">
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[radial-gradient(circle,rgba(245,147,49,0.18),transparent_65%)]"
+              />
+              <div className="relative">
+                <span className="inline-flex items-center gap-2 rounded-full bg-[var(--fu-accent-soft)] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--fu-accent)]">
+                  {copy.badge}
+                </span>
+                <h1 className="mt-6 text-3xl font-bold leading-[1.12] tracking-[-0.025em] sm:text-4xl">{copy.title}</h1>
+                <p className="mt-4 max-w-md text-[15px] leading-[1.85] text-white/60">{copy.description}</p>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
-                {[
-                  ['Fast access', Lock],
-                  ['Keep browsing', Sparkles],
-                  ['Manage content', ArrowRight],
-                ].map(([label, Icon]) => (
-                  <div key={label as string} className="rounded-[1.4rem] border border-black/[0.08] bg-[#f7f8fc] p-4">
-                    <Icon className="h-4 w-4 text-black/70" />
-                    <p className="mt-3 text-sm font-black text-black">{label as string}</p>
-                  </div>
-                ))}
-              </div>
+                <div className="mt-9 grid gap-3">
+                  {perks.map((perk) => (
+                    <div key={perk.label} className="flex items-start gap-3 rounded-[var(--fu-radius-sm)] border border-white/10 bg-white/[0.04] p-4">
+                      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[var(--fu-accent-soft)] text-[var(--fu-accent)]">
+                        <perk.icon className="h-4 w-4" />
+                      </span>
+                      <span>
+                        <span className="block text-sm font-semibold text-white">{perk.label}</span>
+                        <span className="mt-0.5 block text-[13px] text-white/50">{perk.note}</span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="/signup" className="inline-flex items-center gap-2 rounded-full bg-black px-5 py-3 text-sm font-black text-white">
-                  Create account
-                  <ArrowRight className="h-4 w-4" />
+                <Link
+                  href="/"
+                  className="mt-9 inline-flex items-center gap-2 text-sm font-medium text-white/55 transition hover:gap-3 hover:text-white"
+                >
+                  Back to home <ArrowRight className="h-4 w-4" />
                 </Link>
-                <Link href="/" className="inline-flex items-center gap-2 rounded-full border border-black/[0.08] bg-white px-5 py-3 text-sm font-black text-black/78">
-                  Back home
-                </Link>
               </div>
-            </article>
+            </div>
 
-            <div className="rounded-[2.4rem] border border-black/[0.08] bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.10)] sm:p-8 lg:p-10">
-              <p className="text-[11px] font-black uppercase tracking-[0.28em] text-black/45">Member access</p>
-              <h2 className="mt-4 text-3xl font-black tracking-[-0.06em]">{pagesContent.auth.login.formTitle}</h2>
-              <p className="mt-2 text-sm leading-7 text-black/60">Sign in to continue browsing and managing submissions.</p>
-              <div className="mt-6">
-                <EditableLocalLoginForm />
-              </div>
-              <p className="mt-5 text-sm leading-7 text-black/60">
+            {/* form panel */}
+            <div className="bg-white p-8 sm:p-10 lg:p-12">
+              <p className={`${dc.type.eyebrow} text-[var(--fu-accent)]`}>{copy.formTitle}</p>
+              <h2 className="mt-3 text-2xl font-bold tracking-[-0.02em]">Sign in to your account</h2>
+              <p className="mt-2 text-sm leading-[1.75] text-[var(--fu-muted)]">
+                Enter the email and password you used when creating your account.
+              </p>
+
+              <EditableLocalLoginForm />
+
+              <p className="mt-6 text-sm leading-[1.75] text-[var(--fu-muted)]">
                 New here?{' '}
-                <Link href="/signup" className="font-black text-black underline-offset-4 hover:underline">
-                  {pagesContent.auth.login.createCta}
+                <Link href="/signup" className="font-semibold text-[var(--fu-accent-strong)] fu-underline">
+                  {copy.createCta}
                 </Link>
               </p>
             </div>

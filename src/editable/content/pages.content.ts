@@ -1,98 +1,132 @@
 import { slot4BrandConfig } from '@/editable/theme/brand.config'
 
+const siteName = slot4BrandConfig.siteName
+
 export const pagesContent = {
   home: {
     metadata: {
-      title: 'Visual discovery for articles, images, and profiles',
-      description: 'Explore a modern gallery of posts, people, and creative work through a clean browsing experience.',
-      openGraphTitle: 'Visual discovery for articles, images, and profiles',
-      openGraphDescription: 'Browse a polished mix of image-led posts, profiles, and resources in one connected space.',
-      keywords: ['creative discovery', 'image gallery', 'profiles', 'articles', 'portfolio browsing'],
+      title: 'A visual directory of businesses, galleries and the people behind them',
+      description:
+        'Browse image-led profiles, galleries and updates from businesses and independent operators in one calm, easy-to-scan directory.',
+      openGraphTitle: 'A visual directory of businesses, galleries and the people behind them',
+      openGraphDescription:
+        'Discover image-led profiles, galleries and updates from businesses and independent operators, all in one place.',
+      keywords: ['visual directory', 'business gallery', 'image showcase', 'business profiles', 'discovery'],
     },
     hero: {
-      badge: 'Creative discoveries',
-      title: ["The world's best visual work", 'lives on one clean grid.'],
-      description: 'Browse feature stories, image posts, and creator profiles through a focused layout with quick search, topic chips, and strong visual cards.',
-      primaryCta: { label: 'Explore posts', href: '/article' },
-      secondaryCta: { label: 'Browse images', href: '/image' },
-      searchPlaceholder: 'Search posts, people, topics, or visuals',
+      badge: 'A visual directory',
+      title: ['Discover the people', 'behind the businesses.'],
+      description:
+        'Browse profiles and galleries from owners and teams building something worth noticing — a calmer, more considered way to find and be found.',
+      primaryCta: { label: 'Start browsing', href: '/image' },
+      secondaryCta: { label: 'How it works', href: '/about' },
+      searchPlaceholder: 'Search businesses, galleries, topics...',
       focusLabel: 'Filter',
-      featureCardBadge: 'featured picks',
-      featureCardTitle: 'A premium browsing surface for discovery.',
-      featureCardDescription: 'The layout stays image-led and easy to scan, while supporting every active content type.',
+      featureCardBadge: 'Featured picks',
+      featureCardTitle: 'Galleries land here as soon as they publish.',
+      featureCardDescription: 'Once content is live, this space fills with the newest visual sets from across the directory.',
+    },
+    rail: {
+      eyebrow: 'Moving quickly',
+      title: 'Getting attention this week',
+    },
+    feed: {
+      eyebrow: 'Fresh in the directory',
+      title: 'The latest galleries and updates',
+      description: `New visual sets, profiles and notes from across ${siteName}, ordered so the most recent work stays easy to find.`,
+      actionLabel: 'Browse the full directory',
+    },
+    spotlight: {
+      eyebrow: 'Worth opening first',
+      title: 'A closer look at standout work',
+      description: 'One larger feature with supporting entries underneath, so the page has a clear point of focus.',
+      featureLabel: 'Spotlight',
+    },
+    mosaic: {
+      eyebrow: 'Keep exploring',
+      title: 'A wider view of the collection',
+      description: 'A looser, image-led grid for the moments when you would rather browse than search.',
+    },
+    aside: {
+      eyebrow: 'Quick access',
+      title: 'Find the right set in a few clicks.',
+      description: 'Jump straight into the full gallery index, or pick up where the newest entries leave off.',
+      listTitle: 'Recently added',
     },
     intro: {
-      badge: 'Why it feels different',
-      title: 'Built to make exploration feel intentional, fast, and polished.',
+      badge: 'Why it works',
+      title: 'Built so a business is easy to understand at a glance.',
       paragraphs: [
-        'The homepage is designed like a modern editorial feed with a centered hero, fast filters, and a strong cadence of cards.',
-        'Each section changes its rhythm so the page feels curated rather than repetitive, while still keeping the whole site easy to use on mobile.',
-        'From images to profiles, the structure keeps the most useful content visible without losing the sense of browsing a real destination.',
+        'The directory leads with imagery, because a single strong visual usually explains more than a paragraph of description.',
+        'Each section changes rhythm — wide features, compact rows, loose mosaics — so browsing feels considered rather than repetitive.',
+        'Everything stays fast and readable on a phone, which is where most people will find you.',
       ],
       sideBadge: 'What you get',
       sidePoints: [
-        'Fresh homepage structure with a large hero and quick-entry controls.',
-        'Mixed card styles so the feed feels more like a hand-built magazine.',
-        'Cleaner reading and detail pages with room for media and supporting text.',
-        'A dark footer and clear utility navigation that keep the site grounded.',
+        'An image-first home page with search and topic filters up front.',
+        'Several card styles so the feed never reads as one long template.',
+        'Detail pages with room for a full set of visuals and supporting notes.',
+        'A dark, grounded chrome that keeps attention on the work itself.',
       ],
-      primaryLink: { label: 'Go to images', href: '/image' },
-      secondaryLink: { label: 'View profiles', href: '/profile' },
+      primaryLink: { label: 'Open the gallery', href: '/image' },
+      secondaryLink: { label: 'Read about the site', href: '/about' },
     },
     cta: {
-      badge: 'Keep browsing',
-      title: 'A clean, contemporary space for creative discovery.',
-      description: 'Switch between articles, visuals, profiles, listings, and supporting resources without the layout ever feeling cluttered.',
-      primaryCta: { label: 'Open the feed', href: '/article' },
+      badge: 'Keep exploring',
+      title: 'There is more waiting in the archive.',
+      description:
+        'Move between galleries, topics and recent additions without the layout getting in the way. Search when you know what you want, browse when you do not.',
+      primaryCta: { label: 'Open the gallery', href: '/image' },
       secondaryCta: { label: 'Contact us', href: '/contact' },
     },
     taskSection: {
       heading: 'Latest {label}',
-      descriptionSuffix: 'New posts are surfaced here with a stronger visual rhythm and clear entry points.',
+      descriptionSuffix: 'New entries appear here automatically as they are published.',
     },
   },
   about: {
     badge: 'About',
-    title: 'A simple place to browse useful content and creative work.',
-    description: `${slot4BrandConfig.siteName} keeps posts, profiles, and image-led content in one clear browsing experience.`,
+    title: 'A visual directory built for people who run things.',
+    description: `${siteName} keeps galleries, profiles and updates in one clear browsing experience, with the imagery doing most of the talking.`,
     paragraphs: [
-      'The layout is built for people who want to move quickly from inspiration to detail without fighting the interface.',
-      'Every page uses the same visual language so the experience stays familiar even when the content type changes.',
+      'The site is built for owners, operators and small teams who want their work to be found without wading through a cluttered interface.',
+      'Every page uses the same visual language, so moving from a grid to a detail view never feels like landing on a different website.',
+      'The layout stays deliberately quiet: dark chrome, generous spacing, and a single warm accent used only where it helps you act.',
     ],
     values: [
       {
         title: 'Clear discovery',
-        description: 'The site makes it easy to scan, search, and open content without visual clutter.',
+        description: 'Search, filter and scan without visual clutter getting in the way of the work.',
       },
       {
-        title: 'Flexible content',
-        description: 'Articles, images, profiles, and listings all fit into the same system without feeling forced.',
+        title: 'Image first',
+        description: 'Galleries lead with what they look like, then fill in the supporting detail underneath.',
       },
       {
         title: 'Polished structure',
-        description: 'Strong spacing, contrast, and hierarchy keep the experience feeling modern and complete.',
+        description: 'Consistent spacing, contrast and hierarchy across every page, phone included.',
       },
     ],
   },
   contact: {
-    eyebrow: `Contact ${slot4BrandConfig.siteName}`,
-    title: 'Send a short note and we will route it to the right place.',
-    description: 'Use this page for questions, publishing requests, or general support. The form stays simple and focused.',
+    eyebrow: `Contact ${siteName}`,
+    title: 'Send a short note and we will point it the right way.',
+    description: 'Use this page for questions, submissions, or general support. The form stays short on purpose.',
     formTitle: 'Send a message',
   },
 
   search: {
     metadata: {
       title: 'Search',
-      description: 'Search posts, people, and content across the site.',
+      description: 'Search galleries, profiles and content across the site.',
     },
     hero: {
-      badge: 'Search the collection',
-      title: 'Find posts, profiles, and visuals faster.',
-      description: 'Use keywords, categories, and content types to jump straight to the posts that matter most.',
-      placeholder: 'Search by keyword, title, category, or creator',
+      badge: 'Search the archive',
+      title: 'Find galleries, listings and resources faster.',
+      description: 'Use keywords, categories and content types to jump straight to the entries that matter.',
+      placeholder: 'Search by keyword, topic, category, or title',
     },
-    resultsTitle: 'Recent searchable content',
+    resultsTitle: 'Latest searchable content',
   },
   create: {
     metadata: {
@@ -100,36 +134,36 @@ export const pagesContent = {
       description: 'Create and submit content for the site.',
     },
     locked: {
-      badge: 'Creator access',
-      title: 'Sign in to create new content.',
-      description: 'Use your account to open the publishing workspace and prepare a post for the active sections of the site.',
+      badge: 'Member access',
+      title: 'Sign in to add a new entry.',
+      description: 'Use your account to open the publishing workspace and prepare a gallery for the directory.',
     },
     hero: {
       badge: 'Publishing workspace',
-      title: 'Create content for every active section.',
-      description: 'Choose the content type, add details, and prepare a polished post with images, links, and supporting text.',
+      title: 'Add something to the directory.',
+      description: 'Pick the content type, add the details, and prepare a polished entry with images, links and supporting text.',
     },
-    formTitle: 'Content details',
-    submitLabel: 'Submit content',
-    successTitle: 'Content submitted successfully.',
+    formTitle: 'Entry details',
+    submitLabel: 'Submit entry',
+    successTitle: 'Entry saved successfully.',
   },
   auth: {
     login: {
       metadataDescription: 'Login page for this site.',
       badge: 'Member access',
       title: 'Welcome back.',
-      description: 'Sign in to continue browsing, managing submissions, and creating new content from your account.',
+      description: 'Sign in to keep browsing, manage your submissions, and add new entries from your account.',
       formTitle: 'Login',
       submitLabel: 'Continue',
-      noAccount: 'No account matched these details. Create an account first, then sign in.',
+      noAccount: 'No account matched those details. Create an account first, then sign in.',
       success: 'Login successful. Redirecting...',
       createCta: 'Create an account',
     },
     signup: {
       metadataDescription: 'Signup page for this site.',
-      badge: 'Site access',
-      title: 'Create your account and start publishing.',
-      description: 'Create an account to access the publishing workspace, save details, and submit content through the site.',
+      badge: 'Get started',
+      title: 'Create your account.',
+      description: 'An account unlocks the publishing workspace and keeps your details saved between visits.',
       formTitle: 'Create account',
       submitLabel: 'Create account',
       passwordShort: 'Use at least 4 characters for the password.',
@@ -139,16 +173,16 @@ export const pagesContent = {
   },
   detailPages: {
     article: {
-      relatedTitle: 'Related articles',
-      fallbackTitle: 'Article details',
+      relatedTitle: 'Related reading',
+      fallbackTitle: 'Post details',
     },
     listing: {
       relatedTitle: 'Related listings',
       fallbackTitle: 'Listing details',
     },
     image: {
-      relatedTitle: 'Related visuals',
-      fallbackTitle: 'Image details',
+      relatedTitle: 'More like this',
+      fallbackTitle: 'Gallery details',
     },
     profile: {
       relatedTitle: 'Suggested profiles',
@@ -157,3 +191,6 @@ export const pagesContent = {
     },
   },
 } as const
+
+/** Convenience alias used by the home sections. */
+export const homeContent = pagesContent.home
