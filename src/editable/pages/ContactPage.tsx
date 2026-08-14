@@ -1,106 +1,92 @@
 'use client'
 
-import { Building2, FileText, Image as ImageIcon, Mail, MapPin, Phone, Sparkles, Bookmark } from 'lucide-react'
+import Link from 'next/link'
+import { Clock3, Images, Mail, MessageSquare, Sparkles } from 'lucide-react'
 import { pagesContent } from '@/editable/content/pages.content'
-import { getFactoryState } from '@/design/factory/get-factory-state'
-import { getProductKind } from '@/design/factory/get-product-kind'
 import { EditableContactLeadForm } from '@/editable/components/EditableContactLeadForm'
 import { EditableSiteShell } from '@/editable/shell/EditableSiteShell'
+import { editableDesignContract as dc } from '@/editable/layouts/design-contract'
 
-function getTone(kind: ReturnType<typeof getProductKind>) {
-  if (kind === 'directory') {
-    return {
-      shell: 'bg-[linear-gradient(180deg,#f8fbff_0%,#eef4fb_100%)] text-slate-950',
-      panel: 'border border-slate-200 bg-white',
-      soft: 'border border-slate-200 bg-slate-50',
-      muted: 'text-slate-600',
-      accent: 'text-slate-950',
-      action: 'bg-slate-950 text-white hover:bg-slate-800',
-    }
-  }
-  if (kind === 'editorial') {
-    return {
-      shell: 'bg-[linear-gradient(180deg,#fff8f0_0%,#f2e7d8_100%)] text-[#241711]',
-      panel: 'border border-[#dcc8b7] bg-[#fffdfa]',
-      soft: 'border border-[#e6d6c8] bg-[#fff4e8]',
-      muted: 'text-[#6e5547]',
-      accent: 'text-[#241711]',
-      action: 'bg-[#241711] text-[#fff1e2] hover:bg-[#3a241b]',
-    }
-  }
-  if (kind === 'visual') {
-    return {
-      shell: 'bg-[linear-gradient(180deg,#07101f_0%,#101a2d_100%)] text-white',
-      panel: 'border border-white/10 bg-white/8',
-      soft: 'border border-white/10 bg-white/6',
-      muted: 'text-white/72',
-      accent: 'text-white',
-      action: 'bg-[#8df0c8] text-[#07111f] hover:bg-[#77dfb8]',
-    }
-  }
-  return {
-    shell: 'bg-[linear-gradient(180deg,#f7f1ea_0%,#efe1d3_100%)] text-[#261811]',
-    panel: 'border border-[#ddcdbd] bg-[#fffaf4]',
-    soft: 'border border-[#e8dbce] bg-[#f3e8db]',
-    muted: 'text-[#71574a]',
-    accent: 'text-[#261811]',
-    action: 'bg-[#5b2b3b] text-[#fff0f5] hover:bg-[#74364b]',
-  }
-}
+const lanes = [
+  {
+    icon: Images,
+    title: 'Submissions',
+    body: 'Share a gallery, a profile update, or a set of visuals you would like considered for the directory.',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Corrections and edits',
+    body: 'Spotted something out of date on an entry? Send the details and we will get it updated.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Everything else',
+    body: 'Partnerships, feedback on the site, or a question that does not fit anywhere above.',
+  },
+]
 
 export default function ContactPage() {
-  const { recipe } = getFactoryState()
-  const productKind = getProductKind(recipe)
-  const tone = getTone(productKind)
-
-  const lanes =
-    productKind === 'directory'
-      ? [
-          { icon: Building2, title: 'Business onboarding', body: 'Add listings, verify operational details, and bring your business surface live quickly.' },
-          { icon: Phone, title: 'Partnership support', body: 'Talk through bulk publishing, local growth, and operational setup questions.' },
-          { icon: MapPin, title: 'Coverage requests', body: 'Need a new geography or category lane? We can shape the directory around it.' },
-        ]
-      : productKind === 'editorial'
-        ? [
-            { icon: FileText, title: 'Editorial submissions', body: 'Pitch essays, columns, and long-form ideas that fit the publication.' },
-            { icon: Mail, title: 'Newsletter partnerships', body: 'Coordinate sponsorships, collaborations, and issue-level campaigns.' },
-            { icon: Sparkles, title: 'Contributor support', body: 'Get help with voice, formatting, and publication workflow questions.' },
-          ]
-        : productKind === 'visual'
-          ? [
-              { icon: ImageIcon, title: 'Creator collaborations', body: 'Discuss gallery launches, creator features, and visual campaigns.' },
-              { icon: Sparkles, title: 'Licensing and use', body: 'Reach out about usage rights, commercial requests, and visual partnerships.' },
-              { icon: Mail, title: 'Media kits', body: 'Request creator decks, editorial support, or visual feature placement.' },
-            ]
-          : [
-              { icon: Bookmark, title: 'Collection submissions', body: 'Suggest resources, boards, and links that deserve a place in the library.' },
-              { icon: Mail, title: 'Resource partnerships', body: 'Coordinate curation projects, reference pages, and link programs.' },
-              { icon: Sparkles, title: 'Curator support', body: 'Need help organizing shelves, collections, or profile-connected boards?' },
-            ]
+  const copy = pagesContent.contact
 
   return (
-    <EditableSiteShell className={tone.shell}>
-      <main className="mx-auto max-w-[var(--editable-container)] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-        <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div>
-            <p className={`text-[11px] font-black uppercase tracking-[0.32em] ${tone.muted}`}>{pagesContent.contact.eyebrow}</p>
-            <h1 className={`mt-4 text-5xl font-black leading-[0.94] tracking-[-0.08em] sm:text-6xl ${tone.accent}`}>{pagesContent.contact.title}</h1>
-            <p className={`mt-5 max-w-2xl text-sm leading-8 ${tone.muted}`}>{pagesContent.contact.description}</p>
-            <div className="mt-8 space-y-4">
-              {lanes.map((lane) => (
-                <div key={lane.title} className={`rounded-[1.6rem] p-5 ${tone.soft}`}>
-                  <lane.icon className={`h-5 w-5 ${tone.accent}`} />
-                  <h2 className={`mt-3 text-xl font-black ${tone.accent}`}>{lane.title}</h2>
-                  <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>{lane.body}</p>
-                </div>
-              ))}
+    <EditableSiteShell>
+      <main className="bg-[var(--fu-page)] text-[var(--fu-text)]">
+        <section className="relative overflow-hidden bg-[var(--fu-ink)] text-white">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-28 h-[400px] w-[400px] rounded-full bg-[radial-gradient(circle,rgba(245,147,49,0.16),transparent_65%)]"
+          />
+          <div className="relative mx-auto w-full max-w-[var(--editable-container)] px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+            <div className="max-w-2xl fu-rise">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[var(--fu-accent-soft)] px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-[var(--fu-accent)]">
+                <Mail className="h-3.5 w-3.5" />
+                {copy.eyebrow}
+              </span>
+              <h1 className="mt-5 text-[1.9rem] font-bold leading-[1.1] tracking-[-0.025em] sm:text-4xl lg:text-[2.9rem]">
+                {copy.title}
+              </h1>
+              <p className="mt-4 text-[15px] leading-[1.85] text-white/60">{copy.description}</p>
             </div>
           </div>
+        </section>
 
-          <div className={`rounded-[2rem] p-6 sm:p-7 ${tone.panel}`}>
-            <h2 className={`text-2xl font-black tracking-[-0.04em] ${tone.accent}`}>{pagesContent.contact.formTitle}</h2>
-            <p className={`mt-2 text-sm leading-7 ${tone.muted}`}>Tell us a little about what you need and we'll route it through the right lane.</p>
-            <div className="mt-6">
+        <section className="mx-auto w-full max-w-[var(--editable-container)] px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+          <div className="grid gap-7 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-start">
+            <div className="grid content-start gap-4 fu-stagger">
+              {lanes.map((lane) => (
+                <div
+                  key={lane.title}
+                  className="rounded-[var(--fu-radius)] border border-[var(--fu-line)] bg-white p-6 shadow-[var(--fu-shadow)] transition duration-300 hover:-translate-y-1 hover:border-[var(--fu-accent-ring)]"
+                >
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--fu-accent-soft)] text-[var(--fu-accent-strong)]">
+                    <lane.icon className="h-4 w-4" />
+                  </span>
+                  <h2 className="mt-4 text-lg font-bold tracking-[-0.015em]">{lane.title}</h2>
+                  <p className="mt-2 text-sm leading-[1.75] text-[var(--fu-muted)]">{lane.body}</p>
+                </div>
+              ))}
+
+              <div className="rounded-[var(--fu-radius)] bg-[var(--fu-ink)] p-6 text-white">
+                <p className={`${dc.type.eyebrow} text-[var(--fu-accent)]`}>Before you write</p>
+                <p className="mt-3 flex items-start gap-2.5 text-sm leading-[1.75] text-white/60">
+                  <Clock3 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--fu-accent)]" />
+                  Messages are read in the order they arrive. Adding a link or a reference to the entry you mean makes it much
+                  faster to sort.
+                </p>
+                <Link
+                  href="/search"
+                  className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/55 transition hover:gap-3 hover:text-white"
+                >
+                  Search the site first
+                </Link>
+              </div>
+            </div>
+
+            <div className="min-w-0">
+              <div className="mb-4">
+                <p className={`${dc.type.eyebrow} text-[var(--fu-accent)]`}>{copy.formTitle}</p>
+                <h2 className="mt-2 text-2xl font-bold tracking-[-0.02em]">Tell us what you need</h2>
+              </div>
               <EditableContactLeadForm />
             </div>
           </div>
